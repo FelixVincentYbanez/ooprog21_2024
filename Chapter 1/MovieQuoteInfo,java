@@ -1,0 +1,16 @@
+package OOPROG;
+
+public class MovieQuoteInfo {
+    public static void main(String[] args) {
+    	
+        String movie = "Taken 1";
+        String character = "Bryan Mills";
+        String quote = "\"I will look for you, I will find you, and I will kill you.\"";
+        int year = 2008;
+
+        System.out.println("Movie: " + movie);
+        System.out.println("Character: " + character);
+        System.out.println("Quote: " + quote);
+        System.out.println("Year: " + year);
+    }
+}
