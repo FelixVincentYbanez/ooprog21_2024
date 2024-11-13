@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class SpoonerismGenerator {
+
+    public static void main(String[] args) {
+     
+        generateSpoonerism();
+    }
+
+    public static String getWord() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        return scan.nextLine();
+    }
+
+    public static int vowelIndex(String word) {
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if ("aeiouAEIOU".indexOf(c) != -1) {
+                return i;
+            }
+        }
+        return -1; 
+    }
+
+    public static void generateSpoonerism() {
+        String firstWord = getWord();  
+        String secondWord = getWord(); 
+        int vowelIndexFirst = vowelIndex(firstWord);
+        int vowelIndexSecond = vowelIndex(secondWord);
+
+        if (vowelIndexFirst == -1 || vowelIndexSecond == -1) {
+            System.out.println("Both words must contain vowels. Cannot generate a Spoonerism.");
+            return;
+        }
+        
+        if (vowelIndexFirst == 0 || vowelIndexSecond == 0) {
+            System.out.println("Words cannot start with vowels. Cannot generate a Spoonerism.");
+            return;
+        }
+
+        String firstConsonants = firstWord.substring(0, vowelIndexFirst);
+        String firstRest = firstWord.substring(vowelIndexFirst);
+        
+        String secondConsonants = secondWord.substring(0, vowelIndexSecond);
+        String secondRest = secondWord.substring(vowelIndexSecond);
+
+        String newFirstWord = secondConsonants + firstRest;
+        String newSecondWord = firstConsonants + secondRest;
+
+        System.out.println("Spoonerized words: " + newFirstWord + " " + newSecondWord);
+    }
+}
